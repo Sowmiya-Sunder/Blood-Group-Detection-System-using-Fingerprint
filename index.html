@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Group Detector</title>
+    <!-- Link Google Font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap">
+    <!-- Link the CSS file -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!-- Favicon (optional) -->
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
+</head>
+<body>
+    <div class="overlay"></div> <!-- Background overlay -->
+
+    <header>
+        <h1>Blood Group Prediction Using Fingerprint</h1>
+    </header>
+
+    <main class="container">
+        <!-- Project Description Section -->
+        <section class="description-section">
+            <h2>The Process Overview</h2>
+            <p>This project leverages deep learning and computer vision techniques to predict a person's blood group based on their fingerprint. Below is a breakdown of the process:</p>
+        </section>
+
+        <section class="description-section">
+            <h3>1. Dataset Collection with Respective Blood Groups</h3>
+            <p>The first step is gathering a dataset of fingerprint images. Each image is labeled with the corresponding blood group of the individual. The dataset needs to be comprehensive and include diverse groups to ensure the model generalizes well across various blood types.</p>
+        </section>
+
+        <section class="description-section">
+            <h3>2. CNN (Convolutional Neural Network) Modeling</h3>
+            <p>A Convolutional Neural Network (CNN) is used to analyze the fingerprint images. CNNs are particularly good at detecting patterns in images, making them suitable for this task. The model is designed with multiple layers:
+                <ul>
+                    <li><strong>Convolutional layers:</strong> These extract features from the fingerprint images.</li>
+                    <li><strong>Pooling layers:</strong> These reduce the dimensionality and computational complexity.</li>
+                    <li><strong>Fully connected layers:</strong> These classify the images into the respective blood groups.</li>
+                </ul>
+            </p>
+        </section>
+
+        <section class="description-section">
+            <h3>3. Training the Dataset</h3>
+            <p>Once the CNN is designed, it is trained using the collected dataset. During the training process, the model learns to associate fingerprint patterns with the corresponding blood groups. The training requires several iterations, where the model's accuracy improves with each epoch.</p>
+        </section>
+
+        <section class="description-section">
+            <h3>4. Developing a Web Application Using Flask</h3>
+            <p>After successfully training the model, we use Flask to create a web application. Flask is a lightweight web framework in Python that allows us to serve the model's predictions through an intuitive user interface. Users can upload their fingerprint images, and the trained model predicts their blood group based on the uploaded image.</p>
+        </section>
+
+        <section class="description-section">
+            <h3>5. UI/UX and Project Implementation</h3>
+            <p>The web application's interface is designed to be user-friendly, using HTML and CSS for styling. The image upload feature allows users to input their fingerprint, while the prediction result is displayed immediately after the model processes the image. The overall design emphasizes ease of use and accessibility, ensuring a smooth user experience.</p>
+        </section>
+
+        <!-- Form Section -->
+        <section class="upload-section">
+            <h2>Try It Yourself</h2>
+            <figure class="image-effect">
+                <img src="{{ url_for('static', filename='group.jpg') }}" alt="Blood Group Information">
+                <figcaption>Upload your fingerprint and find out your blood group!</figcaption>
+            </figure>
+
+            <form action="/" method="POST" enctype="multipart/form-data" class="upload-form">
+                <input type="file" name="image" accept="image/*" required>
+                <button type="submit">Predict Blood Group</button>
+            </form>
+        </section>
+    </main>
+</body>
+</html>
